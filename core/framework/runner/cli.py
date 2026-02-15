@@ -1431,6 +1431,10 @@ def _read_key() -> str:
                 return "RIGHT"
             elif ch3 == "D":  # Left arrow
                 return "LEFT"
+            elif ch3 == "A":  # Up arrow
+                return "UP"
+            elif ch3 == "B":  # Down arrow
+                return "DOWN"
     return ch
 
 
@@ -1510,6 +1514,10 @@ def _select_agent(agents_dir: Path) -> str | None:
                 print()  # Newline before redrawing
             elif key == "LEFT" and page > 0:
                 page -= 1
+                print()
+            elif key in ("UP", "DOWN"):
+                # UP/DOWN arrows are not used for navigation in this menu
+                # Just redraw without showing "Invalid input"
                 print()
             elif key == "q":
                 print()
